@@ -43,7 +43,350 @@
 					<h3>an Introduction</h3>
 					<h4>Brett Mullins</h4>
 					<h4>Fiscal Research Center</h4>
+					<h4>7/20/2017</h4>
 				</section>
+				<section>
+					<!-- Overview: transition matrices, transition arrays, multidimensional indices, empirical example -->
+					<h2>Overview</h2>
+					<ol>
+						<li>Mobility for Matrices</li>
+						<li>Mobility for Arrays</li>
+						<li>The Case of Noisy Data</li>
+						<li>Develop Multidimensional Index</li>
+						<li>Empirical Example: SNAP Enrollment</li>
+					</ol>
+				</section>
+<!-- Section 1: Mobilty for Matrices -->
+				<section>
+					<section>
+						<h2>Mobility for Matrices</h2>
+					</section>
+					<section>
+						<h2>Contingency Tables</h2> <!-- Single period case -->
+						<div style="width: 100%">
+							<div style="float:left; width: 50%">
+								<ul style="font-size: 80%">
+									<li>The primative representation of data for mobility</li>
+									<li>These data illustrate the single period case</li>
+								</ul>
+							</div>
+							<div style="float:right; width: 50%">
+								<img src="tables/contable_single1.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Contingency Tables</h2> <!-- Single period case -->
+						<div style="width: 100%">
+							<div style="float:left; width: 50%">
+								<ul style="font-size: 80%">
+									<li>The primative representation of data for mobility</li>
+									<li>These data illustrate the single period case</li>
+									<li>We may discretize income either into bins of a fixed width or into quantiles</li>
+								</ul>
+							</div>
+							<div style="float:right; width: 50%">
+								<img src="tables/contable_single2.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Transition Matrices</h2> <!-- Count matrix -->
+						<div style="width: 100%">
+							<div style="float:left; width: 50%">
+								<ul style="font-size: 80%">
+									<li>Construct the <span style="color: #8B0000">count matrix</span> by binning observations to the cartesian product of the ranks</li>
+								</ul>
+							</div>
+							<div style="float:right; width: 50%">
+								<img src="tables/cmatrix.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Transition Matrices</h2> <!-- Transition matrix -->
+						<div style="width: 100%">
+							<div style="float:left; width: 50%">
+								<ul style="font-size: 80%">
+									<li>Construct the count matrix by binning observations to the cartesian product of the ranks</li>
+									<li>Construct the <span style="color: #8B0000">unconditional transition matrix</span> $M_u$ by dividing each cell by the total observations</li>
+								</ul>
+							</div>
+							<div style="float:right; width: 50%">
+								<img src="tables/tmatrix1.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Transition Matrices</h2> <!-- Transition matrix -->
+						<div style="width: 100%">
+							<div style="float:left; width: 50%">
+								<ul style="font-size: 80%">
+									<li>Construct the count matrix by binning observations to the cartesian product of the ranks</li>
+									<li>Construct the unconditional transition matrix $M_u$ by dividing each cell by the total observations</li>
+									<li>Alternatively, the <span style="color: #8B0000">conditional transition matrix</span> $M_c$ can be used to take advantage of stochatic properties</li>
+								</ul>
+							</div>
+							<div style="float:right; width: 50%">
+								<img src="tables/tmatrix2.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Mobility Indices</h2> <!-- Define mobility index - use data-fragments -->
+						A <i>mobility index</i> is a function $m : \mathcal{M} \rightarrow \mathbb{R} $ that captures some facet of mobility for the sample <br>
+						where $\mathcal{M}$ is the set of all transition matrices of a fixed size
+					</section>
+					<section>
+						<h2>Prais-Bibby Index</h2> <!-- Prais-Bibby index -->
+						<div style="width:100%">
+							<div style="float:left; width:50%">
+								<ul style="list-style: none;">
+									<li style="font-size: 70%">Let $n$ denote the number of ranks</li>
+									<br>
+									<li style="text-align:center; font-size: 60%">$m_{PB}(M_c) = \left( \sum_{i = 1}^N (1 - M_{cii})\sum_{j = 1}^N M_{uij} \right)$</li>
+									<br>
+									<li style="font-size: 70%">Captures the probability that one moves from their initial rank</li>
+								</ul>
+							</div>
+							<div style="float:right; width:50%">
+								<img src="tables/tmatrix2_diag.png" width="100%" height="100%" style="border:none;">
+								<p style="font-size: 80%" class="fragment fade-up" data-fragment-index="1">$m_{PB}(M_c) = 0.4$</p>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Prais-Bibby Index</h2> <!-- Prais-Bibby index -->
+						<div style="width:100%">
+							<div style="float:left; width:50%">
+								<ul style="list-style: none;">
+									<li style="font-size: 70%">Let $n$ denote the number of ranks</li>
+									<br>
+									<li style="text-align:center; font-size: 60%">$m_{PB}(M_c) = \left( \sum_{i = 1}^N (1 - M_{cii})\sum_{j = 1}^N M_{uij} \right)$</li>
+									<br>
+									<li style="font-size: 70%">Captures the probability that one moves from their initial rank</li>
+									<br>
+									<li style="font-size: 70%;">Equivalent to one minus the sum of the diagonal of $M_u$</li>
+								</ul>
+							</div>
+							<div style="float:right; width:50%; margin: 0 auto">
+								<img src="tables/tmatrix1_diag.png" width="100%" height="100%" style="border:none;">
+								<p style="font-size: 80%" class="fragment fade-up" data-fragment-index="1">$m_{PB}(M_c) = 0.4$</p>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Mobility Indices</h2> <!-- Classification indices -->
+						<ul>
+							<li>$m_{PB}$ is an <i>individualistic discrete</i> index</li>
+							<li class="fragment fade-up" data-fragment-index="1">An index is <i>individualistic</i> if it averages or aggregates the mobility of individuals</li>
+							<li class="fragment fade-up" data-fragment-index="2">An index is <i>discrete</i> if it measures whether an individual experienced mobility rather than the magnitude of the mobility</li>
+						</ul>
+					</section>
+				</section>
+<!-- Section 2: Mobilty for Arrays -->
+				<section>
+					<section>
+						<h2>Mobility for Arrays</h2>
+					</section>
+					<section>
+						<h2>Contingency Tables</h2> <!-- Multi-period case -->
+						<img src="tables/contable_multi1.png" width="100%" height="100%" style="border:none;">
+					</section>
+					<section>
+						<h2>Contingency Tables</h2> <!-- Multi-period case -->
+						<img src="tables/contable_multi2.png" width="100%" height="100%" style="border:none;">
+					</section>
+					<section>
+						<h2>Multidimensional Arrays</h2>
+						<ul>
+							<li>Analgous stucture to a transition matrix</li>
+							<li>For $N = 3$, the array can be visualized as a cube</li>
+							<li>Follows process of computing the count array, unconditional transition array, and conditional transition array</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Indices for Multidimensional Arrays</h3>
+						<ul>
+							<li>We can generalize the Prais-Bibby Index to arbitrary arrays as follows: let $m_{PB}:\mathcal{A} \rightarrow \mathbb{R}$, where $\mathcal{A}$ is the set of square transition arrays</li>
+							<li>The function is defined as before where the <i>trace</i> or <i>diagonal</i> of the array is the set of cells that each share the same index on each dimension</li>
+							<li class="fragment fade-up" data-fragment-index="1">Interpretation: one does not experience mobility if one is in the same rank at each observed time</li>
+						</ul>
+					</section>
+				</section>
+
+<!-- Section 3: Motivate the problem from inference perspective with shocks -->
+				<section>
+					<section>
+						<h2>The Case of Noisy Data</h2>
+					</section>
+					<section>
+						<h2>Noisy Data</h2> <!-- Single period case -->
+						<div style="width: 100%">
+							<div style="float:left; width: 50%; font-size: 70%">
+								<ul>
+									<li>Suppose income (earnings) is observed at Time 1 and Time 5</li>
+									<li class="fragment fade-up" data-fragment-index="1">No mobility</li>
+									<li class="fragment fade-up" data-fragment-index="2">Since individuals are not isolated, they face exogenous impacts to their income</li>
+									<li class="fragment fade-up" data-fragment-index="3">Will this methodology lead to correct classification and wider inference to the population?</li>
+									<li class="fragment fade-up" data-fragment-index="4">It is clearly too tolerant</li>
+								</ul>
+							</div>
+							<div style="float:right; width: 50%">
+								<img src="tables/earnings_over_time.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Noisy Data</h2> <!-- Multi-period case -->
+						<div style="width: 100%">
+							<div style="float:left; width: 50%; font-size: 70%">
+								<ul>
+									<li>Obvious solution: use more data!</li>
+									<li class="fragment fade-up" data-fragment-index="2">Mobility</li>
+									<li class="fragment fade-up" data-fragment-index="3">This classification is too strict</li>
+									<li class="fragment fade-up" data-fragment-index="4">The ideal index minimizes misclassification while being tolerant enough to be robust to small exogenous income changes</li>
+								</ul>
+							</div>
+							<div class="fragment fade-up" data-fragment-index="1" style="float:right; width: 50%">
+								<img src="tables/earnings_over_time2.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+				</section>
+<!-- Section 4: Multidimensional indices -->
+				<section>
+					<section>
+						<h2>Multidimensional Indices</h2>
+					</section>
+					<section>
+						<h3>Mobility with Respect to What?</h3>
+						<ul style="list-style: none">
+							<li>In multiperiod data, what rank do we evaluate mobility with respect to?</li>
+							<ul style="font-size: 80%">
+								<li>Let $R_i$ denote this <i>reference rank</i> for individual $i$</li>
+								<li>Unless there is an apriori reason to prefer a rank, use the mode</li>
+								<li class="fragment fade-up" data-fragment-index="1">Example: Look at individuals who joined a program thought to affect earnings at year $t$. Then $t$ ought to the be year we talk about mobility in reference to</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Tolerance</h2>
+						<ul style="font-size: 90%">
+							<li>Let $\alpha$ be the <i>tolerance</i> parameter and $r_{it}$ be the rank of individual $i$ at time $t$</li>
+							<li>An individual experiences mobility if $\sum_{t=1}^{N} |r_{it} - R_i| > \alpha$</li>
+							<li class="fragment fade-up" data-fragment-index="1">Geometrically, this is a distance to the diagonal and we can think of the set of ranks $D_\alpha = \{ r_i \mid \sum_{t=1}^{N} |r_{it} - R_i| \leq \alpha \} $ as the generalized diagonal</li>
+							<li class="fragment fade-up" data-fragment-index="2">Observe that the Prais-Bibby Index for arrays assumes $\alpha = 0$</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Generalized Diagonal Index</h3>
+						<ul>
+							<li>Define the Generalized Diagonal index as follows: $$m_{gd}(M_{u}) = 1 - \left( \sum_{p \in D_\alpha(M_{u})} p \right)$$</li>
+							<li>Interpretation: probability that one is not on the Generalized Diagonal at tolerance $\alpha$</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Setting Tolerance Threshold</h3>
+						<ol>
+							<li>$\alpha < \frac{N}{2}$</li>
+							<ul>
+								<li>If one does not experience mobility, then one should be in the reference rank for a majority of the observations</li>
+							</ul>
+							<li class="fragment fade-up" data-fragment-index="1">$\alpha$ is non-decreasing in $N$</li>
+							<ul class="fragment fade-up" data-fragment-index="1">
+								<li>As the number of observed times increases, the tolerance threshold should never decrease</li>
+							</ul>
+						</ol>
+					</section>
+					<section>
+						<h2>Recap</h2>
+						<ul>
+							<li>Noisy data is problematic for multiperiod mobility measurement</li>
+							<li>Developed the notion of tolerance to generalize the Prais-Bibby index on arrays</li>
+						</ul>
+					</section>
+				</section>
+<!-- Section 5: Empirical example -->
+				<section>
+					<section>
+						<h2>Empirical Analysis</h2>
+					</section>
+					<section>
+						<h2>Data</h2>
+						<ul>
+							<li>Earnings data for enrollees in SNAP in Georgia during 2004</li>
+							<li>Date range: 2004-2014</li>
+							<li>Obtained by merging SNAP enrollment data to DOL annual wage data</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Results</h2> <!-- Prais-Bibby index -->
+						<div style="width:100%">
+							<div style="float:left; width:50%">
+								<ul style="font-size: 70%">
+									<li>From 2006 to 2013, the Prais-Bibby index appears relatively stable</li>
+									<li class="fragment fade-up" data-fragment-index="1">By selecting any of these years, one may conclude that approx. 68% of the cohort experiences mobility</li>
+									<li class="fragment fade-up" data-fragment-index="2">This potentially includes misclassifications (additionally due to data quality issues)</li>
+								</ul>
+							</div>
+							<div style="float:right; width:50%">
+								<img src="tables/pbindex.png" width="100%" height="100%" style="border:none;">
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>Results</h2>
+						<div style="width:100%">
+							<div style="float:left; width:50%">
+								<ul style="font-size: 70%">
+									<li>The PB Index for arrays suggests that the PB index alone underestimates mobility</li>
+									<li>However, it likely overestimates mobility</li>
+									<li class="fragment fade-up" data-fragment-index="1">The GD Index finds a middle ground</li>
+								</ul>
+							</div>
+							<div style="float:right; width:50%">
+								<ul style="text-align: center; list-style: none; font-size: 80%">
+									<li>PB Index for Arrays: to 2009</li>
+									<li>0.79</li>
+									<li>PB Index for Arrays: to 2014</li>
+									<li>0.81</li>
+									<li class="fragment fade-up" data-fragment-index="1">GD Index: to 2009</li>
+									<li class="fragment fade-up" data-fragment-index="1">0.77</li>
+									<li class="fragment fade-up" data-fragment-index="1">GD Index: to 2014</li>
+									<li class="fragment fade-up" data-fragment-index="1">0.75</li>
+								</ul>
+							</div>
+						</div>
+					</section>
+				</section>
+<!-- Section 6: Conclusion -->
+				<section>
+					<section>
+						<h2>Conclusions</h2>
+						<ul>
+							<li>Noisy data is problematic for multiperiod mobility measurement</li>
+							<li>Developed the notion of tolerance to generalize the Prais-Bibby index on arrays</li>
+							<li>Observed improvements in inferring the mobility of a population of SNAP recipients</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Future Directions</h2>
+						<ul>
+							<li>Explore the Generalized Diagonal index from the perspective of contingency tables</li>
+							<li>Consider which sets of mobility axioms are satisfied by the Generalized Diagonal index</li>
+							<li>Derive statistical properties of the Generalized Diagonal Index</li>
+						</ul>
+					</section>
+				</section>
+
+<!-- Appendix -->
+			<section>
+				<section>
+					<h2>Example</h2>
+					<img src="tables/example.png" width="700em" height="500em" style="border:none;">
+				</section>
+			</section>
 			</div>
 		</div>
 
